@@ -1,0 +1,63 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Install uv",
+            "type": "shell",
+            "command": "curl -LsSf https://astral.sh/uv/install.sh | sh",
+            "problemMatcher": [],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "uv sync (all extras)",
+            "type": "shell",
+            "command": "uv sync --all-extras",
+            "problemMatcher": [],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "direnv allow",
+            "type": "shell",
+            "command": "direnv allow",
+            "problemMatcher": [],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "pre-commit install",
+            "type": "shell",
+            "command": "uv run pre-commit install",
+            "problemMatcher": [],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Setup dev environment",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "uv sync (all extras)",
+                "direnv allow",
+                "pre-commit install"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}

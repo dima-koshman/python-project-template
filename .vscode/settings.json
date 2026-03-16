@@ -1,0 +1,25 @@
+{
+    "files.watcherExclude": {
+        "**/.venv/**": true
+    },
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.ipynb_checkpoints": true,
+        "**/*.egg-info": true,
+        ".venv/bin": true,
+        ".venv/.lock": true,
+        ".venv/CACHEDIR.TAG": true,
+        ".venv/share": true,
+        ".venv/etc": true,
+        ".venv/pyvenv.cfg": true,
+        ".venv/.gitignore": true,
+        ".venv/**/*.dist-info": true,
+        ".venv/**/*.pth": true,
+        ".venv/**/*.so": true,
+        ".venv/**/*.pyx": true,
+        ".venv/**/py.typed": true
+    },
+    "search.exclude": {
+        "**/.venv": true
+    },
+}
