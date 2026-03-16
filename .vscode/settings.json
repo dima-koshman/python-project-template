@@ -22,4 +22,5 @@
     "search.exclude": {
         "**/.venv": true
     },
+    "files.insertFinalNewline": true
 }

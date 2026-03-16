@@ -120,3 +120,32 @@ class Foo(pydantic.BaseModel):
 ## Multiline strings
 
 For multiline strings (e.g. `description=` in `pydantic.Field`), use `inspect.cleandoc("""...""")` rather than parenthesized string concatenation.
+
+## Secrets and environment variables
+
+Store all secrets and environment-specific values (API keys, passwords, tokens, URLs, ports) in the `.env` file. The `.env` file is gitignored and loaded automatically by `direnv`.
+
+Reference them in code via `os.environ` or a settings model (e.g. `pydantic_settings.BaseSettings`).
+
+**Never** hardcode secrets or environment-specific values in:
+
+- `.vscode/tasks.json`
+- `.vscode/settings.json`
+- `pyproject.toml`
+- Any file tracked by git
+
+```python
+# Good
+import os
+
+api_key = os.environ["MY_API_KEY"]
+
+# Bad
+api_key = "sk-abc123..."
+```
+
+If a task needs an environment variable, reference it as a shell variable that will be populated from the environment:
+
+```json
+{ "command": "uv run my-tool --key $MY_API_KEY" }
+```

@@ -49,6 +49,7 @@
             "label": "Setup dev environment",
             "dependsOrder": "sequence",
             "dependsOn": [
+                "Install uv",
                 "uv sync (all extras)",
                 "direnv allow",
                 "pre-commit install"

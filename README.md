@@ -1,7 +1,5 @@
 # template
 
-> Replace this with your project description.
-
 ## Development Environment Setup
 
 ### Prerequisites
@@ -9,6 +7,10 @@
 - macOS or Linux
 - [direnv](https://direnv.net/) — loads `.env` into your shell automatically
 - [Node.js](https://nodejs.org/) — required for `markdownlint-cli2` pre-commit hook
+
+### One-shot setup (except for VS Code extensions)
+
+Run steps 1-4 below in sequence via **Terminal → Run Task → Setup dev environment**.
 
 ### 1. Install uv
 
@@ -46,11 +48,6 @@ uv run pre-commit install
 
 This installs git hooks that run automatically on every `git commit`.
 Run via VS Code task: **Terminal → Run Task → pre-commit install**.
-
-### One-shot setup
-
-Run all setup steps except `uv` installation in sequence via
-**Terminal → Run Task → Setup dev environment**.
 
 ### 5. VS Code extensions
 
@@ -94,5 +91,12 @@ uv run pytest
 ```bash
 uv run poe ruff          # format + lint Python
 uv run poe markdownlint  # lint Markdown via npx markdownlint-cli2
-uv run poe pymarkdown    # lint Markdown via pymarkdown
 ```
+
+## Secrets and environment variables
+
+Store all secrets and environment-specific values in `.env` (gitignored, auto-loaded by direnv).
+Reference them via `os.environ` or `pydantic_settings.BaseSettings` — never hardcode in
+`tasks.json`, `settings.json`, `pyproject.toml`, or any file tracked by git.
+
+See `AGENTS.md` for the full guide and code examples.
