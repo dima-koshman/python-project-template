@@ -22,5 +22,44 @@
     "search.exclude": {
         "**/.venv": true
     },
-    "files.insertFinalNewline": true
+    "windsurfPyright.disableOrganizeImports": true,
+    "evenBetterToml.formatter.alignEntries": true,
+    "evenBetterToml.formatter.alignComments": true,
+    "evenBetterToml.formatter.arrayAutoCollapse": false,
+    "evenBetterToml.formatter.indentEntries": true,
+    "evenBetterToml.formatter.indentTables": true,
+    "evenBetterToml.formatter.reorderArrays": true,
+    "evenBetterToml.formatter.reorderInlineTables": true,
+    "evenBetterToml.formatter.reorderKeys": true,
+    "evenBetterToml.formatter.trailingNewline": true,
+    "[toml]": {
+        "editor.defaultFormatter": "tamasfe.even-better-toml"
+    },
+    "geminicodeassist.project": "khaki-broker-xzftk",
+    "windsurfPyright.analysis.exclude": [
+        ".git",
+        "**/__pycache__",
+        ".venv"
+    ],
+    "windsurfPyright.analysis.ignore": [
+        ".venv/"
+    ],
+    "windsurfPyright.analysis.logLevel": "Warning",
+    "claudeCode.selectedModel": "default",
+    "claudeCode.preferredLocation": "panel",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports.ruff": "always"
+    },
+    "[python]": {
+        "editor.defaultFormatter": null,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "notebook.showCellStatusBar": "visibleAfterExecute",
+    "notebook.globalToolbar": false,
+    "notebook.cellToolbarLocation": {
+        "default": "hidden"
+    },
+    "notebook.formatOnSave.enabled": true
 }

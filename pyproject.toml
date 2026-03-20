@@ -55,7 +55,7 @@ docstring-code-format = true
 
 
 [tool.codespell]
-skip = ".venv,uv.lock,*.ipynb"
+skip = ".venv,uv.lock,*.ipynb,*.crt"
 
 
 [tool.basedpyright]
@@ -63,10 +63,10 @@ pythonVersion = "3.12"
 typeCheckingMode = "standard"
 venvPath = "."
 venv = ".venv"
-exclude = ["tests", ".venv"]
+exclude = ["tests", ".venv", ".claude"]
 
 
-[tool.pytest]
+[tool.pytest.ini_options]
 cache_dir = "~/.cache/pytest"
 asyncio_mode = "auto"
 addopts = [

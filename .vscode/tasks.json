@@ -1,64 +1,34 @@
 {
     "version": "2.0.0",
+    "type": "shell",
+    "problemMatcher": [],
     "tasks": [
         {
             "label": "Install uv",
-            "type": "shell",
             "command": "curl -LsSf https://astral.sh/uv/install.sh | sh",
-            "problemMatcher": [],
-            "group": "build",
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared"
-            }
+            "problemMatcher": []
         },
         {
-            "label": "uv sync (all extras)",
-            "type": "shell",
-            "command": "uv sync --all-extras",
-            "problemMatcher": [],
-            "group": "build",
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared"
-            }
+            "label": "Uv sync all extras",
+            "command": "uv sync --all-extras"
         },
         {
-            "label": "direnv allow",
-            "type": "shell",
-            "command": "direnv allow",
-            "problemMatcher": [],
-            "group": "build",
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared"
-            }
+            "label": "Direnv allow",
+            "command": "direnv allow"
         },
         {
-            "label": "pre-commit install",
-            "type": "shell",
-            "command": "uv run pre-commit install",
-            "problemMatcher": [],
-            "group": "build",
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared"
-            }
+            "label": "Pre-commit install",
+            "command": "uv run pre-commit install"
         },
         {
             "label": "Setup dev environment",
             "dependsOrder": "sequence",
             "dependsOn": [
                 "Install uv",
-                "uv sync (all extras)",
-                "direnv allow",
-                "pre-commit install"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": []
+                "Uv sync all extras",
+                "Direnv allow",
+                "Pre-commit install"
+            ]
         }
     ]
 }
