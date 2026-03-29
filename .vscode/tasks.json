@@ -29,6 +29,11 @@
                 "Direnv allow",
                 "Pre-commit install"
             ]
+        },
+        {
+            "label": "Basedpyright",
+            "command": "uv run basedpyright",
+            "problemMatcher": "$python"
         }
     ]
 }

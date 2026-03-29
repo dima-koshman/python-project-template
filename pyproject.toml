@@ -1,75 +1,76 @@
 [project]
-name = "template"
-version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
+    dependencies    = []
+    description     = "Add your description here"
+    name            = "template"
+    readme          = "README.md"
+    requires-python = ">=3.12"
+    version         = "0.1.0"
 
 [dependency-groups]
-dev = [
-    "basedpyright>=1.38.2",
-    "notebook>=7.5.5",
-    "pre-commit>=4.2.0",
-    "pytest>=9.0.2",
-    "pytest-asyncio>=1.3.0",
-    "pytest-beartype>=0.2.0",
-    "pytest-cov>=7.0.0",
-    "pytest-xdist>=3.8.0",
-    "ruff>=0.15.6",
-]
+    dev = [
+        "basedpyright>=1.38.2",
+        "notebook>=7.5.5",
+        "pre-commit>=4.2.0",
+        "pytest-asyncio>=1.3.0",
+        "pytest-beartype>=0.2.0",
+        "pytest-cov>=7.0.0",
+        "pytest-xdist>=3.8.0",
+        "pytest>=9.0.2",
+        "ruff>=0.15.6",
+    ]
 
 
 [tool.uv]
-package = true
+    package = true
 
 
 [tool.poe]
-executor = "simple"
+    executor = "simple"
 
-[tool.poe.tasks]
-markdownlint = "npx markdownlint-cli2 --fix ."
-ruff = { shell = "uv run ruff format --respect-gitignore . && uv run ruff check --fix --respect-gitignore ." }
+    [tool.poe.tasks]
+        markdownlint = "npx markdownlint-cli2 --fix ."
+        ruff         = { shell = "uv run ruff format --respect-gitignore . && uv run ruff check --fix --respect-gitignore ." }
 
 
 [tool.ruff]
-exclude = [".venv", ".ipynb_checkpoints", "*.ipynb"]
-line-length = 100
-cache-dir = "~/.cache/ruff"
+    cache-dir   = "~/.cache/ruff"
+    exclude     = ["*.ipynb", ".ipynb_checkpoints", ".venv"]
+    line-length = 100
 
-[tool.ruff.lint]
-select = [
-    "E",   # pycodestyle errors
-    "F",   # pyflakes
-    "I",   # isort
-    "UP",  # pyupgrade (modernizes syntax for your target Python version)
-    "B",   # bugbear (catches common gotchas)
-    "SIM", # simplify (suggests cleaner patterns)
-]
-# Ignore unused imports in __init__.py files
-per-file-ignores = { "__init__.py" = ["F401"] }
-exclude = ["*.ipynb"]
+    [tool.ruff.lint]
+        select = [
+            "B",   # bugbear (catches common gotchas)
+            "E",   # pycodestyle errors
+            "F",   # pyflakes
+            "I",   # isort
+            "SIM", # simplify (suggests cleaner patterns)
+            "UP",  # pyupgrade (modernizes syntax for your target Python version)
+        ]
+        # Ignore unused imports in __init__.py files
+        exclude          = ["*.ipynb"]
+        per-file-ignores = { "__init__.py" = ["F401"] }
 
-[tool.ruff.format]
-docstring-code-format = true
+    [tool.ruff.format]
+        docstring-code-format = true
 
 
 [tool.codespell]
-skip = ".venv,uv.lock,*.ipynb,*.crt"
-
-
-[tool.basedpyright]
-pythonVersion = "3.12"
-typeCheckingMode = "standard"
-venvPath = "."
-venv = ".venv"
-exclude = ["tests", ".venv", ".claude"]
+    skip = ".venv,uv.lock,*.ipynb,*.crt"
 
 
 [tool.pytest.ini_options]
-cache_dir = "~/.cache/pytest"
-asyncio_mode = "auto"
-addopts = [
-    # "--beartype-packages=template",
-    "-n=4",
-]
+    addopts = [
+        # "--beartype-packages=template",
+        "-n=4",
+    ]
+    asyncio_mode = "auto"
+    cache_dir = "~/.cache/pytest"
+
+
+[tool.pyright]
+    exclude          = ["**/*.egg-info", "**/__pycache__"]
+    include          = ["src"]
+    pythonVersion    = "3.12"
+    typeCheckingMode = "standard"
+    venv             = ".venv"
+    venvPath         = "."
